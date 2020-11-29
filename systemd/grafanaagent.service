@@ -1,0 +1,14 @@
+[Unit]
+Description=Grafana Cloud Agent
+
+[Service]
+# value to match the location and name of the startup script
+ExecStart=/etc/grafana-agent/start.sh
+Restart=always
+
+[Install]
+# tells systemd to load this service during boot at at time after the system is running,
+# when all network services are started and the system is available for users to log in
+# (but before the activation of a local GUI, which doesn’t matter on a server system that doesn’t run a GUI).
+# If this is not included, the service will not start at system boot.
+WantedBy=multi-user.target
